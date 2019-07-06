@@ -1,0 +1,7 @@
+
+.nav-side-container {
+    width: 72px;
+    height: 100vh;
+    /*box-shadow: 5px 10px #888888;*/
+    background-color: lightgray;
+}

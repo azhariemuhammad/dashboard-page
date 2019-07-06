@@ -14,8 +14,7 @@ code {
 
 
 .container {
-  width: 960px;
-  margin: 0 auto;
+
 }
 
 .flex-between {
@@ -23,8 +22,15 @@ code {
   justify-content: space-between;
 }
 
-.margin-8 {
-  margin: 8px;
+.flex {
+  display: flex;
+}
+
+.content {
+  width: 100%;
+  margin-left: 24px;
+  margin-right: 32px;
+  margin-top: 31px;
 }
 
 .user {

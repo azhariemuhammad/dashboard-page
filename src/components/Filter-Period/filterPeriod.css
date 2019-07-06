@@ -1,0 +1,21 @@
+.icon {
+    height: 22px;
+    width: 22px;
+    padding: 2px;
+}
+
+.filter {
+    height: 48px;
+    position: relative;
+}
+
+.filter span {
+    padding: 8px;
+}
+
+.dropdown-content {
+    top: 45px;
+    position: absolute;
+    left: -110px;
+    height: 250px;
+}
