@@ -10,19 +10,44 @@ class FilterOption extends React.Component {
         super(props)
         this.state = {
             to: 0,
-            from: 0
+            from: 0,
+            filtersOptions: this.getInitialState(),
+            selected: ''
         }
-
         this.handleFilters = this.handleFilters.bind(this)
+        this.handleSelectedFilter = this.handleSelectedFilter.bind(this)
+        this.handleApply = this.handleApply.bind(this)
+    }
+
+    getInitialState() {
+        return {
+            'yesterday': false,
+            'lastSevenDays': false,
+            'lastThirtyDays': false,
+            'thisMonth': false,
+            'custom': false
+        }
+    }
+
+    async handleApply() {
+        await this.handleFilters()
+        await this.props.selectedRange(this.state.from, this.state.to)
+    }
+
+    handleSelectedFilter(e) {
+        const newFilters = this.getInitialState()
+        newFilters[e.target.name] = true
+        this.setState({selected: e.target.name})
+        this.setState({filtersOptions: newFilters})
     }
 
 
-    handleFilters(e) {
+    handleFilters() {
         var date = new Date();
-        let toDate = date.setDate(date.getDate()-1)
+        let toDate = date.setDate(date.getDate() - 1)
         let fromDate = new Date(toDate).setDate(new Date(toDate).getDate() - 6)
 
-        switch (e.target.name) {
+        switch (this.state.selected) {
             case 'yesterday':
                 toDate = date.setDate(date.getDate() + 1)
                 fromDate = new Date(toDate).setDate(new Date(toDate).getDate() - 1)
@@ -39,22 +64,46 @@ class FilterOption extends React.Component {
                 let FirstDay = new Date(year, month, 1);
                 let LastDay = new Date(year, month + 1, 0);
                 return this.setState({to: FirstDay, from: LastDay})
+            default:
+                return this.setState({to: toDate, from: fromDate})
         }
     }
+
     render() {
+        const {
+            yesterday,
+            lastSevenDays,
+            lastThirtyDays,
+            thisMonth,
+            custom,
+        } = this.state.filtersOptions
+
         return (
             <div className="d-flex">
                 <div className="filter-options">
                     <div className="title">Period</div>
                     <ul className="filters">
+                        {/*<li>*/}
+                        {/*    <button className={(yesterday) ? "selected": undefined} onClick={this.handleSelectedFilter} name="today">Today</button>*/}
+                        {/*</li>*/}
                         <li>
-                            <button onClick={this.handleFilters} name="today">Today</button>
+                            <button className={(yesterday) ? "selected" : undefined} onClick={this.handleSelectedFilter} name="yesterday">Yesterday</button>
                         </li>
-                        <li><button onClick={this.handleFilters} name="yesterday">Yesterday</button></li>
-                        <li><button onClick={this.handleFilters} name="lastSevenDays">Last 7 days</button></li>
-                        <li><button onClick={this.handleFilters} name="lastThirtyDays">Last 30 days</button></li>
-                        <li><button onClick={this.handleFilters} name="thisMonth">This Month</button></li>
-                        <li><button onClick={this.handleFilters} name="custom">Custom</button></li>
+                        <li>
+                            <button className={(lastSevenDays) ? "selected" : undefined} onClick={this.handleSelectedFilter} name="lastSevenDays">Last 7 days</button>
+                        </li>
+                        <li>
+                            <button className={(lastThirtyDays) ? "selected" : undefined} onClick={this.handleSelectedFilter} name="lastThirtyDays">Last 30 days</button>
+                        </li>
+                        <li>
+                            <button className={(thisMonth) ? "selected" : undefined} onClick={this.handleSelectedFilter} name="thisMonth">This Month</button>
+                        </li>
+                        <li>
+                            <button className={(custom) ? "selected" : undefined} onClick={this.handleSelectedFilter} name="custom">Custom</button>
+                        </li>
+                        <li>
+                            <button onClick={this.handleApply}>Apply</button>
+                        </li>
                     </ul>
                 </div>
                 <DatePicker to={new Date(this.state.to)} from={new Date(this.state.from)}/>

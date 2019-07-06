@@ -33,6 +33,6 @@
     border-bottom: 1px solid #f0f0f0;
     margin-bottom: 8px;
 }
-.filter-options li a {
-
+.selected {
+    background-color: #37B04C;
 }

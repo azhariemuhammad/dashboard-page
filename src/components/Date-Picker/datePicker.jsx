@@ -26,18 +26,11 @@ export default class DatePicker extends React.Component {
     }
 
     render() {
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         const {from, to} = this.props;
         const modifiers = {start: from, end: to};
         return (
             <div className="RangeExample">
                 <p>
-                    {!from && !to && 'Please select the first day.'}
-                    {from && !to && 'Please select the last day.'}
-                    {from &&
-                    to &&
-                    `Selected from ${from.toLocaleDateString('en-ID', options)} to
-                ${to.toLocaleDateString('en-ID', options)}`}{' '}
                     {from &&
                     to && (
                         <button className="link" onClick={this.handleResetClick}>
