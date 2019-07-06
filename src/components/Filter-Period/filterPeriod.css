@@ -16,6 +16,23 @@
 .dropdown-content {
     top: 45px;
     position: absolute;
-    left: -110px;
-    height: 250px;
+    left: -310px;
+    height: auto;
+}
+
+.dropdown-content .filter-options {
+    width: 150px;
+}
+
+.filter-options ul {
+    list-style-type: none;
+    padding: 0;
+}
+.filter-options li {
+    height: 30px;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 8px;
+}
+.filter-options li a {
+
 }

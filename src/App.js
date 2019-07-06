@@ -19,7 +19,7 @@ function App() {
                 <header className="App-header">
                     <Header />
                 </header>
-                <div className="container flex">
+                <div className="container d-flex">
                     <NavSide />
                     <Router>
                         <div className="content">

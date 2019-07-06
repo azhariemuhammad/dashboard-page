@@ -12,20 +12,9 @@ export default class DatePicker extends React.Component {
         super(props);
         this.handleDayClick = this.handleDayClick.bind(this);
         this.handleResetClick = this.handleResetClick.bind(this);
-        this.state = this.getInitialState();
+        this.state = {}
     }
 
-    getInitialState() {
-        var date = new Date();
-
-        var yesterday = date.setDate(date.getDate()-1)
-        var from = new Date(yesterday).setDate(new Date(yesterday).getDate() - 6)
-
-        return {
-            from: new Date(from),
-            to: new Date(yesterday),
-        };
-    }
 
     handleDayClick(day) {
         const range = DateUtils.addDayToRange(day, this.state);
@@ -38,7 +27,7 @@ export default class DatePicker extends React.Component {
 
     render() {
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        const {from, to} = this.state;
+        const {from, to} = this.props;
         const modifiers = {start: from, end: to};
         return (
             <div className="RangeExample">

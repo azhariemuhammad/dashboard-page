@@ -22,7 +22,7 @@ code {
   justify-content: space-between;
 }
 
-.flex {
+.d-flex {
   display: flex;
 }
 
