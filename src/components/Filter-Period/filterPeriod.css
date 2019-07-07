@@ -18,6 +18,8 @@
     position: absolute;
     left: -310px;
     height: auto;
+    background-color: white;
+    z-index: 12;
 }
 
 .dropdown-content .filter-options {
@@ -35,4 +37,12 @@
 }
 .selected {
     background-color: #37B04C;
+}
+
+.menu .dots {
+    width: 4px;
+    border-radius: 10px;
+    height: 4px;
+    background-color: black;
+    margin: 2px 0;
 }

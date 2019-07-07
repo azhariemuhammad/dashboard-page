@@ -1,0 +1,48 @@
+.tab {
+    background-color: #37B04C;
+    height: 48px;
+    margin-top: 30px;
+    margin-bottom: 16px;
+}
+.tab .tab-title {
+    color: white;
+    padding: 8px;
+    font-size: 20px;
+}
+
+.tab i {
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    color: white;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+.tab .up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+
+}
+.tab span {
+    padding-top: 12px;
+    padding-right: 8px;
+}
+.tab span > a{
+    color: white;
+    font-size: 14px;
+}
+.tab span > a:hover{
+    color: red;
+}
+.tab .help-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.market-insights-content {
+    margin-top: 16px
+}
+.market-insights-content .item {
+    margin-right: 16px;
+}

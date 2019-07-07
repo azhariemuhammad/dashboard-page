@@ -76,7 +76,7 @@ export default class DatePicker extends React.Component {
         const {from, to} = (this.props.isCustom) ? this.state: this.props
         const modifiers = {start: from, end: to};
         return (
-            <div className="RangeExample">
+            <div className="range">
                 <p>
                     {from &&
                     to && (

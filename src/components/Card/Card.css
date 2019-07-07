@@ -1,0 +1,42 @@
+.ui.feed>.event>.label {
+    width: auto;
+}
+.ui.feed>.event>.label img {
+    border-radius: 0px;
+    width: 80px;
+    height: 80px
+}
+
+.total {
+    width: 138px;
+    margin-top: 16px;
+}
+
+.content {
+    margin-right: 8px;
+    border-top: none !important;
+}
+
+.test:after {
+    width: 10px;
+    height: 10px;
+    background: red;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.percentage {
+    color: red;
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+.detail {
+    font-size: 10px;
+}
+
+.ui.feed>.event {
+    border: 0.5px solid #C5C5C5 !important;
+    margin-bottom: 8px !important;
+}
