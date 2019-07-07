@@ -5,7 +5,6 @@ import MarketChart from "../components/Charts/charts";
 import './DashboardContainer.css'
 import helpIcon from '../assets/images/Help.png'
 import CardProduct from "../components/Card/CardProduct";
-import CardLink from "../components/CardLink";
 
 const DashboardContainer = () => {
     const products = [
@@ -31,18 +30,18 @@ const DashboardContainer = () => {
 
     const sale = [
         {
-            price: '3.600.000',
-            change: '13.8',
+            price: '3,600,000',
+            change: '13.8%',
             desc: 'last period in products sold'
         }
     ]
     return (
         <div>
             <div className="flex-between">
-                <div className="title">
+                <div className="title text-heading-1">
                     Dashboard
                 </div>
-                <div className="filter-period">
+                <div className="filter-period btn-filter">
                     <FilterPeriod/>
                 </div>
             </div>

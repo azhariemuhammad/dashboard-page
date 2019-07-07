@@ -1,0 +1,10 @@
+.top {
+    height: 32px;
+    margin: 8px;
+}
+.top .btn-filter {
+    width: 200px;
+    height: auto;
+    padding-left: 8px;
+}
+

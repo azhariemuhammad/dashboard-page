@@ -13,7 +13,6 @@
 }
 
 .content {
-    margin-right: 8px;
     border-top: none !important;
 }
 
@@ -39,4 +38,19 @@
 .ui.feed>.event {
     border: 0.5px solid #C5C5C5 !important;
     margin-bottom: 8px !important;
+}
+
+.highlighted {
+    background-color: #FFE7BD !important;
+}
+.highlighted > .label img {
+    border-radius: 0px;
+    width: 80px !important;
+    height: 80px !important;
+}
+
+.ui.feed>.event>.label img {
+    border-radius: 0px;
+    width: 60px;
+    height: 60px
 }

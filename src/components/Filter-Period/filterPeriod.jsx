@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react'
 import çalendarIcon from '../../assets/images/calendar.png'
 import './filterPeriod.css'
 import FilterOption from "./filterOption";
+import {Icon} from "semantic-ui-react";
 
 const FilterPeriod = () => {
     const [dropdown, setDropdown] = useState(false)
@@ -36,18 +37,17 @@ const FilterPeriod = () => {
     const {from, to} = range;
     return (
         <div>
-            <div className="filter d-flex">
+            <div className="filter flex-between">
                 <img className="icon" src={çalendarIcon} alt=""/>
+                <span>Period</span>
                 <span>
-                     {!from && !to && 'Please select the first day.'}
-                    {from && !to && 'Please select the last day.'}
                     {from &&
                     to &&
-                    `Selected from ${from.toLocaleDateString(options)} to
-                    ${to.toLocaleDateString(options)}`}{' '}
+                    `${from.toLocaleDateString(options)} to
+                    ${to.toLocaleDateString(options)}`}
                 </span>
-                <button onClick={() => setDropdown(!dropdown)}>
-                    V
+                <button className="btn-link" onClick={() => setDropdown(!dropdown)}>
+                    <Icon disabled name='angle down'/>
                 </button>
                 {
                     (dropdown) && (

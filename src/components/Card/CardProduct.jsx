@@ -3,7 +3,7 @@ import {Card, Feed} from 'semantic-ui-react'
 import {Link, withRouter} from 'react-router-dom'
 
 import avatar from '../../assets/images/jenny.jpg';
-import avatar2 from '../../assets/images/elliot.jpg';
+import productCompetitor from '../../assets/images/Product-Competitor.png';
 import salesIcon from '../../assets/images/SalesTurnover.svg';
 import './Card.css'
 
@@ -16,8 +16,8 @@ function CardProduct(props) {
                 (props.products.length > 0) &&
                 props.products.map((product, idx) => {
                     return (
-                        <Feed.Event className="list" key={idx}>
-                            <Feed.Label style={{borderRadius: "2px"}} image={(idx % 2 === 0) ? avatar : avatar2}/>
+                        <Feed.Event className={(idx === 0) ?  "highlighted" : "list"} key={idx}>
+                            <Feed.Label image={(idx % 2 === 0) ? avatar : productCompetitor}/>
                             <Feed.Content>
                                 <div className="name">
                                     {product.name}
@@ -42,7 +42,7 @@ function CardProduct(props) {
                     return (
                         <div className="flex-between" key={idx}>
                             <div className="">
-                                <div>{sale.price}</div>
+                                <div className="text-heading-3">Rp {sale.price}</div>
                                 <div className="detail">
                                     <span className="percentage">&#8595; {sale.change}</span>
                                     <span className="desc">{sale.desc}</span>
@@ -61,7 +61,7 @@ function CardProduct(props) {
             <Card.Content>
                 <Card.Header>
                     <div className="flex-between">
-                        <span>{props.category.title}</span>
+                        <span className={(props.products) ? "text-title-1" : "text-title-2"}>{props.category.title}</span>
                         <div className="menu">
                             <div className="dots"></div>
                             <div className="dots"></div>

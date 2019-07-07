@@ -3,6 +3,8 @@ import {
     ComposedChart, Line, Area, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
     Legend, Scatter,
 } from 'recharts';
+import {Icon} from "semantic-ui-react";
+import './charts.css'
 
 const data = [
     {
@@ -33,7 +35,20 @@ export default class MarketChart extends PureComponent {
     render() {
         return (
             <div className="charts">
-                <p>Last 6 months</p>
+                <div className="top flex-between">
+                    <div className="title text-title-1">
+                        AVERAGE PURCHASE VALUE
+                    </div>
+                    <div className="btn-filter">
+                        <span>Last 6 Months</span>
+                        <button className="btn-link">
+                            <Icon disabled name='angle down'/>
+                        </button>
+                        <Icon disabled name='ellipsis vertical'/>
+
+                    </div>
+                </div>
+
                 <ComposedChart
                     width={600}
                     height={400}

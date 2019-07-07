@@ -121,7 +121,7 @@ class FilterOption extends React.Component {
                             <button className={(custom) ? "selected" : undefined} onClick={this.handleSelectedFilter} name="custom">Custom</button>
                         </li>
                         <li>
-                            <button onClick={this.handleApply}>Apply</button>
+                            <button className="btn-submit" onClick={this.handleApply}>Apply</button>
                         </li>
                     </ul>
                 </div>

@@ -1,3 +1,10 @@
+
+.title {
+    width: 100%;
+}
+.filter-period {
+    width: 481px;
+}
 .tab {
     background-color: #37B04C;
     height: 48px;
