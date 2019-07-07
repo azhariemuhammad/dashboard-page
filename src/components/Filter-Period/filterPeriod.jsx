@@ -10,16 +10,26 @@ const FilterPeriod = () => {
 
     useEffect(() => {
         function getRange() {
-            let date = new Date();
-            let toDate = date.setDate(date.getDate() - 1)
-            let fromDate = new Date(toDate).setDate(new Date(toDate).getDate() - 6)
-            setRange({from: new Date(fromDate), to: new Date(toDate)})
+            const from = localStorage.getItem('from')
+            const to = localStorage.getItem('to')
+            if ( from === null && to === null) {
+                let date = new Date();
+                let toDate = date.setDate(date.getDate() - 1)
+                let fromDate = new Date(toDate).setDate(new Date(toDate).getDate() - 6)
+                setRange({from: new Date(fromDate), to: new Date(toDate)})
+            } else {
+                setRange({from: new Date(from), to: new Date(to)})
+            }
+
         }
         getRange()
     }, [])
 
-    const handleSelectedRange = (from, to) => {
-        setRange({from: new Date(from), to: new Date(from)})
+    const handleSelectedRange = (range) => {
+        localStorage.setItem('to', range.to)
+        localStorage.setItem('from', range.from)
+
+        setRange(range)
     }
 
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -28,11 +38,13 @@ const FilterPeriod = () => {
         <div>
             <div className="filter d-flex">
                 <img className="icon" src={çalendarIcon} alt=""/>
-                <span>{
-                    (from == '' || to == '') ? `Select period` :
-                    `${from.toLocaleDateString('en-ID', options)} to
-                        ${to.toLocaleDateString('en-ID', options)}
-                    `}
+                <span>
+                     {!from && !to && 'Please select the first day.'}
+                    {from && !to && 'Please select the last day.'}
+                    {from &&
+                    to &&
+                    `Selected from ${from.toLocaleDateString(options)} to
+                    ${to.toLocaleDateString(options)}`}{' '}
                 </span>
                 <button onClick={() => setDropdown(!dropdown)}>
                     V
@@ -40,7 +52,10 @@ const FilterPeriod = () => {
                 {
                     (dropdown) && (
                         <div className="dropdown-content">
-                            <FilterOption selectedRange={(from, to) => handleSelectedRange(from, to)}/>
+                            <FilterOption
+                                selectedRange={(range) => handleSelectedRange(range)}
+                                initialRange={range}
+                            />
                         </div>
                     )
                 }

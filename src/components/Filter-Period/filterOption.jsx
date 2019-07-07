@@ -9,13 +9,15 @@ class FilterOption extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            to: 0,
-            from: 0,
+            to: undefined,
+            from: undefined,
             filtersOptions: this.getInitialState(),
-            selected: ''
+            selected: '',
+            isCustom: false
         }
         this.handleFilters = this.handleFilters.bind(this)
         this.handleSelectedFilter = this.handleSelectedFilter.bind(this)
+        this.handleSelectedRange = this.handleSelectedRange.bind(this)
         this.handleApply = this.handleApply.bind(this)
     }
 
@@ -29,9 +31,20 @@ class FilterOption extends React.Component {
         }
     }
 
+    componentDidMount() {
+        const {initialRange} = this.props
+            this.setState({to: initialRange.to, from: initialRange.from })
+    }
+
     async handleApply() {
         await this.handleFilters()
-        await this.props.selectedRange(this.state.from, this.state.to)
+        if (!this.state.isCustom) {
+            await this.props.selectedRange({from: new Date(this.state.from), to: new Date(this.state.to)})
+        }
+    }
+
+    handleSelectedRange(range) {
+        this.props.selectedRange(range)
     }
 
     handleSelectedFilter(e) {
@@ -49,21 +62,27 @@ class FilterOption extends React.Component {
 
         switch (this.state.selected) {
             case 'yesterday':
-                toDate = date.setDate(date.getDate() + 1)
                 fromDate = new Date(toDate).setDate(new Date(toDate).getDate() - 1)
+                this.setState({isCustom: false})
                 return this.setState({to: toDate, from: fromDate})
             case 'lastSevenDays':
+                this.setState({isCustom: false})
                 return this.setState({to: toDate, from: fromDate})
             case 'lastThirtyDays':
                 toDate = date.setDate(date.getDate())
                 fromDate = new Date(toDate).setDate(new Date(toDate).getDate() - 30)
+                this.setState({isCustom: false})
                 return this.setState({to: toDate, from: fromDate})
             case 'thisMonth':
                 let month = date.getMonth()
                 let year = date.getFullYear();
                 let FirstDay = new Date(year, month, 1);
                 let LastDay = new Date(year, month + 1, 0);
+                this.setState({isCustom: false})
                 return this.setState({to: FirstDay, from: LastDay})
+            case 'custom':
+                this.setState({isCustom: true})
+                this.setState({to: 0, from:0})
             default:
                 return this.setState({to: toDate, from: fromDate})
         }
@@ -106,7 +125,10 @@ class FilterOption extends React.Component {
                         </li>
                     </ul>
                 </div>
-                <DatePicker to={new Date(this.state.to)} from={new Date(this.state.from)}/>
+                <DatePicker selectedRange={(range) => this.handleSelectedRange(range)}
+                            isCustom={this.state.isCustom}
+                            to={new Date(this.state.to)}
+                            from={new Date(this.state.from)}/>
             </div>
         )
     }

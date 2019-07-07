@@ -12,13 +12,59 @@ export default class DatePicker extends React.Component {
         super(props);
         this.handleDayClick = this.handleDayClick.bind(this);
         this.handleResetClick = this.handleResetClick.bind(this);
-        this.state = {}
+        this.state = this.getInitialState();
+    }
+
+    getInitialState() {
+        return {
+            from: undefined,
+            to: undefined,
+        };
+    }
+
+    shouldComponentUpdate(nextProps) {
+        const diffCustom = this.props.isCustom;
+        const diffTo = this.props.to !== nextProps.to;
+        const diffFrom = this.props.from !== nextProps.from;
+        return diffCustom || diffTo || diffFrom
     }
 
 
     handleDayClick(day) {
-        const range = DateUtils.addDayToRange(day, this.state);
-        this.setState(range);
+        if (this.validateIsFuture(day)) {
+            alert('Future dates can not be selected')
+        } else if (this.validateTodaysDate(day)) {
+            alert('Today\'s date can not be selected')
+        } else {
+            const range = DateUtils.addDayToRange(day, this.state);
+            if (range.from && range.to) {
+                this.props.selectedRange(range)
+                return (this.monthDiff(new Date(range.from), new Date(range.to))) ?
+                    alert('Maximum time range is 6 months') : this.setState(range);
+            }
+            this.setState(range);
+
+        }
+    }
+
+    validateIsFuture(day) {
+        const isFutureDay = DateUtils.isFutureDay(day)
+        return isFutureDay
+    }
+
+
+
+    validateTodaysDate(day) {
+        let dt = new Date(day).getDate()
+        return dt === new Date().getDate()
+    }
+
+    monthDiff(d1, d2) {
+        var months;
+        months = (d2.getFullYear() - d1.getFullYear()) * 12;
+        months -= d1.getMonth() + 1;
+        months += d2.getMonth();
+        return months > 6
     }
 
     handleResetClick() {
@@ -26,7 +72,8 @@ export default class DatePicker extends React.Component {
     }
 
     render() {
-        const {from, to} = this.props;
+
+        const {from, to} = (this.props.isCustom) ? this.state: this.props
         const modifiers = {start: from, end: to};
         return (
             <div className="RangeExample">
