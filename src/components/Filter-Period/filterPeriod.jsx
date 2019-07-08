@@ -8,13 +8,12 @@ import {Icon} from "semantic-ui-react";
 const FilterPeriod = () => {
     const [dropdown, setDropdown] = useState(false)
     const [range, setRange] = useState({from: "", to: ""})
-    const [wrapperRef, setWrapperReff] = useState("")
 
     useEffect(() => {
         function getRange() {
             const from = localStorage.getItem('from')
             const to = localStorage.getItem('to')
-            if ( from === null && to === null) {
+            if (from === null && to === null) {
                 let date = new Date();
                 let toDate = date.setDate(date.getDate() - 1)
                 let fromDate = new Date(toDate).setDate(new Date(toDate).getDate() - 6)
@@ -24,15 +23,10 @@ const FilterPeriod = () => {
             }
 
         }
+
         getRange()
     }, [])
 
-    useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    })
 
     const handleSelectedRange = (range) => {
         localStorage.setItem('to', range.to)
@@ -41,14 +35,13 @@ const FilterPeriod = () => {
         setRange(range)
     }
 
-    const handleClickOutside  = (event) => {
-        if (wrapperRef && !wrapperRef.contains(event.target)) {
-            setDropdown(false)
-        }
+    const handleCloseDropdown = (e) => {
+        e.preventDefault()
+        setDropdown(!dropdown)
     }
 
 
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const options = {year: 'numeric', month: 'long', day: 'numeric'};
     const {from, to} = range;
     return (
         <div>
@@ -58,18 +51,20 @@ const FilterPeriod = () => {
                 <span>
                     {from &&
                     to &&
-                    `${from.toLocaleDateString(options)} to
-                    ${to.toLocaleDateString(options)}`}
+                    `${from.toLocaleDateString('id-ID', options)} -
+                    ${to.toLocaleDateString('id-ID', options)}`}
                 </span>
-                <button className="btn-link" onClick={() => setDropdown(!dropdown)}>
-                    <Icon disabled name='angle down'/>
+                <button className="btn-link" onClick={(e) => handleCloseDropdown(e)}>
+                    <Icon disabled name={(dropdown) ? "angle down" : "angle up"}/>
                 </button>
+
                 {
                     (dropdown) && (
-                        <div className="dropdown-content" ref={(node) => setWrapperReff(node)}>
+                        <div className="dropdown-content">
                             <FilterOption
                                 selectedRange={(range) => handleSelectedRange(range)}
                                 initialRange={range}
+                                closeDropdown={(e) => handleCloseDropdown(e)}
                             />
                         </div>
                     )
