@@ -12,15 +12,15 @@ const Header = () => {
                 <div className="header-left d-flex">
                     <figure>
                         <picture className="logo">
-                            {/*<img src="https://www.advotics.com/wp-content/uploads/2019/06/cropped-logo-6.jpg" alt=""/>*/}
+                            <img src="https://www.advotics.com/wp-content/uploads/2019/06/cropped-logo-6.jpg" alt=""/>
                         </picture>
                     </figure>
                     <div className="second-logo" >
                         <div className="wrapper-second-logo">
                             <span>Powered by</span>
                             <picture className="logo2">
-                                {/*<img src="https://www.advotics.com/wp-content/uploads/2019/06/cropped-logo-6.jpg"*/}
-                                {/*     alt=""/>*/}
+                                <img src="https://www.advotics.com/wp-content/uploads/2019/06/cropped-logo-6.jpg"
+                                     alt=""/>
                             </picture>
                         </div>
                     </div>

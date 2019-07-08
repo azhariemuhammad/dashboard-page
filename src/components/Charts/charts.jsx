@@ -50,7 +50,7 @@ export default class MarketChart extends PureComponent {
                 </div>
 
                 <ComposedChart
-                    width={600}
+                    width={720}
                     height={400}
                     data={data}
                     margin={{
@@ -65,7 +65,7 @@ export default class MarketChart extends PureComponent {
                     <Bar dataKey="nett" stackId="a" fill="#37B04C" />
                     <Bar dataKey="gross" stackId="a" fill="#289E45" />
                     <Bar dataKey="apv" stackId="a" fill="#7AE28C" />
-                    <Bar dataKey="upt" stackId="a" fill="#707070" barSize={20} fill="#37B04C" />
+                    <Bar dataKey="upt" stackId="a" fill="#707070" />
 
                     <Line type="monotone" dataKey="gross" stroke="#FFE854" />
                 </ComposedChart>

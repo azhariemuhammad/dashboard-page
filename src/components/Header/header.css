@@ -9,6 +9,7 @@
 .header-right .header-icon .user {
     width: 32px;
     height: 32px;
+    margin-right: 8px;
 
 }
 
@@ -51,8 +52,8 @@
 }
 
 .wrapper-second-logo .logo2 img {
-    width: 72px;
-    height: 18px;
+    width: 66px;
+    height: 16px;
     padding-top: 2px;
 }
 

@@ -39,8 +39,13 @@
     border-bottom: 1px solid #f0f0f0;
     margin-bottom: 8px;
 }
+
+.filter-options li button {
+    border: none;
+}
 .selected {
-    background-color: #37B04C;
+    color: #37B04C;
+    font-weight: bold;
 }
 
 .menu .dots {

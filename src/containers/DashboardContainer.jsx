@@ -25,6 +25,18 @@ const DashboardContainer = () => {
             name: 'Biskuat',
             price: 10000,
             totalSales: 2
+        },
+        {
+            id: 4,
+            name: 'GreenFails',
+            price: 16000,
+            totalSales: 7
+        },
+        {
+            id: 5,
+            name: 'Kurma',
+            price: 11000,
+            totalSales: 7
         }
     ]
 
@@ -64,7 +76,7 @@ const DashboardContainer = () => {
                 />
             </div>
             <div className="market-insights-content d-flex">
-                <div className="item">
+                <div className="item" id="chart">
                     <MarketChart/>
                 </div>
                 <div className="item">

@@ -1,7 +1,8 @@
 
 .nav-side-container {
     width: 72px;
-    height: 100vh;
+    border: 0.5px solid lightgray;
+    height: auto;
 }
 
 .nav-side {
@@ -15,7 +16,7 @@
 .dots {
     border-radius: 10px;
     height: 4px;
-    background-color: #D2D2D2;
+    background-color: #707070;
     margin: 2px 0;
 }
 

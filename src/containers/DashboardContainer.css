@@ -53,3 +53,7 @@
 .market-insights-content .item {
     margin-right: 16px;
 }
+
+#chart {
+    width: 100%;
+}

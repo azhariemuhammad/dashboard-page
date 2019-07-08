@@ -23,7 +23,7 @@ function CardProduct(props) {
                                     {product.name}
                                 </div>
                                 <div className="total flex-between">
-                                    <span>{product.price}</span>
+                                    <span className="text-title-2">Rp. {product.price}</span>
                                     <span>{product.totalSales}</span>
                                 </div>
                             </Feed.Content>

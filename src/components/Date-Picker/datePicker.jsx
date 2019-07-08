@@ -11,7 +11,6 @@ export default class DatePicker extends React.Component {
     constructor(props) {
         super(props);
         this.handleDayClick = this.handleDayClick.bind(this);
-        this.handleResetClick = this.handleResetClick.bind(this);
         this.state = this.getInitialState();
     }
 
@@ -67,24 +66,12 @@ export default class DatePicker extends React.Component {
         return months > 6
     }
 
-    handleResetClick() {
-        this.setState(this.getInitialState());
-    }
-
     render() {
 
         const {from, to} = (this.props.isCustom) ? this.state: this.props
         const modifiers = {start: from, end: to};
         return (
             <div className="range">
-                <p>
-                    {from &&
-                    to && (
-                        <button className="link" onClick={this.handleResetClick}>
-                            Reset
-                        </button>
-                    )}
-                </p>
                 <DayPicker
                     className="Selectable"
                     numberOfMonths={this.props.numberOfMonths}
