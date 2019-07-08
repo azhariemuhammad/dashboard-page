@@ -9,7 +9,7 @@ First clone the repo, then:
 Install the dependencies and start the server.
 
 ```sh
-$ cd social-media-dashboard
+$ cd dashboard-page
 $ npm install
 $ npm start
 ```
