@@ -3,3 +3,56 @@
     height: 32px;
 }
 
+.header-right .header-icon {
+    padding-right: 8px;
+}
+.header-right .header-icon .user {
+    width: 32px;
+    height: 32px;
+
+}
+
+.header-right .header-icon .logout {
+    width: 15px;
+    height: 15px;
+}
+
+
+.header-right #logout {
+    padding-top: 8px;
+}
+
+.header-right {
+    margin-right: 32px;
+    padding: 16px 8px;
+}
+
+.user-profile {
+    flex-direction: column;
+    margin-right: 16px;
+    text-align: center;
+}
+
+.second-logo {
+    width: 145px;
+    position: relative;
+    top: 35px;
+    left: -35px;
+
+}
+
+.wrapper-second-logo {
+    position: absolute;
+}
+.wrapper-second-logo > span {
+    font-size: 11px;
+    color: #5B5B5B;
+    padding-right: 8px;
+}
+
+.wrapper-second-logo .logo2 img {
+    width: 72px;
+    height: 18px;
+    padding-top: 2px;
+}
+

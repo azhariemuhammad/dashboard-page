@@ -72,6 +72,13 @@ code {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
+.text-title-3 {
+  font-size: 12px;
+  color: #4D4F5C;
+  font-weight: lighter;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
 .text-heading-1 {
   font-size: 40px;
   color: #707070;

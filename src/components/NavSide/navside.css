@@ -2,6 +2,51 @@
 .nav-side-container {
     width: 72px;
     height: 100vh;
-    /*box-shadow: 5px 10px #888888;*/
-    background-color: lightgray;
+}
+
+.nav-side {
+    display: block;
+    width: 100%;
+    margin-top: 8px;
+    background-color: white;
+}
+
+
+.dots {
+    border-radius: 10px;
+    height: 4px;
+    background-color: #D2D2D2;
+    margin: 2px 0;
+}
+
+.dots1 {
+    width: 24px;
+}
+
+.dots2 {
+    width: 16px;
+}
+
+.dots3 {
+    width: 8px;
+}
+
+.nav-side ul {
+    padding: 0;
+    padding-left: 16px;
+    margin: 8px;
+}
+
+.nav-side ul li {
+    list-style: none;
+    text-decoration: none;
+    padding: 0;
+    height: 48px;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.nav-side ul li img {
+    height: 17px;
+    width: 17px;
 }

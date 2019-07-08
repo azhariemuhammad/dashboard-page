@@ -62,7 +62,11 @@ export default class MarketChart extends PureComponent {
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Bar dataKey="gross" barSize={20} fill="#37B04C" />
+                    <Bar dataKey="nett" stackId="a" fill="#37B04C" />
+                    <Bar dataKey="gross" stackId="a" fill="#289E45" />
+                    <Bar dataKey="apv" stackId="a" fill="#7AE28C" />
+                    <Bar dataKey="upt" stackId="a" fill="#707070" barSize={20} fill="#37B04C" />
+
                     <Line type="monotone" dataKey="gross" stroke="#FFE854" />
                 </ComposedChart>
             </div>
