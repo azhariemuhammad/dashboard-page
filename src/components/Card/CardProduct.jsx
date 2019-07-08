@@ -1,10 +1,10 @@
-import React, {useEffect} from 'react'
+import React, {} from 'react'
 import {Card, Feed} from 'semantic-ui-react'
-import {Link, withRouter} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 
-import avatar from '../../assets/images/jenny.jpg';
 import productCompetitor from '../../assets/images/Product-Competitor.png';
 import salesIcon from '../../assets/images/SalesTurnover.svg';
+import frisianPlug from '../../assets/images/frisianflug.png'
 import './Card.css'
 
 
@@ -17,7 +17,7 @@ function CardProduct(props) {
                 props.products.map((product, idx) => {
                     return (
                         <Feed.Event className={(idx === 0) ?  "highlighted" : "list"} key={idx}>
-                            <Feed.Label image={(idx % 2 === 0) ? avatar : productCompetitor}/>
+                            <Feed.Label image={(idx % 2 === 0) ? frisianPlug : productCompetitor}/>
                             <Feed.Content>
                                 <div className="name">
                                     {product.name}
