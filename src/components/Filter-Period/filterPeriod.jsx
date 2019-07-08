@@ -8,6 +8,7 @@ import {Icon} from "semantic-ui-react";
 const FilterPeriod = () => {
     const [dropdown, setDropdown] = useState(false)
     const [range, setRange] = useState({from: "", to: ""})
+    const [wrapperRef, setWrapperReff] = useState("")
 
     useEffect(() => {
         function getRange() {
@@ -26,12 +27,26 @@ const FilterPeriod = () => {
         getRange()
     }, [])
 
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    })
+
     const handleSelectedRange = (range) => {
         localStorage.setItem('to', range.to)
         localStorage.setItem('from', range.from)
 
         setRange(range)
     }
+
+    const handleClickOutside  = (event) => {
+        if (wrapperRef && !wrapperRef.contains(event.target)) {
+            setDropdown(false)
+        }
+    }
+
 
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     const {from, to} = range;
@@ -51,7 +66,7 @@ const FilterPeriod = () => {
                 </button>
                 {
                     (dropdown) && (
-                        <div className="dropdown-content">
+                        <div className="dropdown-content" ref={(node) => setWrapperReff(node)}>
                             <FilterOption
                                 selectedRange={(range) => handleSelectedRange(range)}
                                 initialRange={range}
